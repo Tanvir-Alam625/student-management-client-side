@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const StudentRow = () => {
   return (
@@ -49,7 +50,7 @@ const StudentRow = () => {
             class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Details</a>
+              <Link to="/details">Details</Link>
             </li>
             <li>
               <a>Delete</a>

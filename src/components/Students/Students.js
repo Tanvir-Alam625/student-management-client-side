@@ -3,6 +3,11 @@ import StudentRow from "./StudentRow";
 
 const Students = () => {
   const aaa = [3, 4, 5, 3, 5, 3, 5];
+  const handleSearch = (event) => {
+    event.preventDefault();
+    console.log(event.target.roll.value);
+    event.target.reset();
+  };
   return (
     <div className="font-sans max-w-[1100px] mx-auto px-2">
       <div className="stu-header py-4">
@@ -17,10 +22,11 @@ const Students = () => {
         <h2 className="text-xl my-3 text-primary  font-semibold text-center">
           Search Student
         </h2>
-        <form className="flex justify-center">
+        <form onSubmit={handleSearch} className="flex justify-center">
           <input
             type="number"
             required
+            name="roll"
             className=" border-2 border-primary px-4 py-2 rounded-l-md  shadow-md w-full max-w-xs bg-transparent outline-0"
             placeholder="Type Student Roll"
           />
