@@ -1,6 +1,8 @@
 import React from "react";
+import StudentRow from "./StudentRow";
 
 const Students = () => {
+  const aaa = [3, 4, 5, 3, 5, 3, 5];
   return (
     <div className="font-sans max-w-[1100px] mx-auto px-2">
       <div className="stu-header py-4">
@@ -31,7 +33,7 @@ const Students = () => {
         <button className="btn btn-primary">See All Students</button>
         <button className="btn btn-primary"> Add New Student</button>
       </div>
-      <div class="overflow-x-auto w-full">
+      <div class="overflow-x-auto w-full py-12 h-auto">
         <table class="table w-full bg-transparent">
           {/* <!-- head --> */}
           <thead>
@@ -44,36 +46,9 @@ const Students = () => {
           </thead>
           <tbody>
             {/* <!-- row 1 --> */}
-            <tr>
-              <td>
-                <div class="flex items-center space-x-3">
-                  <div class="avatar">
-                    <div class="mask mask-squircle w-12 h-12">
-                      <img
-                        src="/tailwind-css-component-profile-2@56w.png"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div class="font-bold">Hart Hagerty</div>
-                    <div class="text-sm opacity-50">Panchagarh</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                Computer
-                <div className="sm">
-                  <span class="badge badge-ghost badge-sm">
-                    semester:7th shit:1st
-                  </span>
-                </div>
-              </td>
-              <td>Web Development</td>
-              <th>
-                <button class="btn btn-ghost btn-xs">details</button>
-              </th>
-            </tr>
+            {aaa.map((a) => (
+              <StudentRow />
+            ))}
           </tbody>
         </table>
       </div>
