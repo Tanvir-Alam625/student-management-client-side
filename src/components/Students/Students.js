@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StudentRow from "./StudentRow";
 
 const Students = () => {
   const aaa = [3, 4, 5, 3, 5, 3, 5];
+  const [students, setStudents] = useState([]);
+  useEffect(() => {
+    fetch("students.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setStudents(data);
+      });
+  }, []);
+
   const handleSearch = (event) => {
     event.preventDefault();
     console.log(event.target.roll.value);
@@ -52,8 +61,8 @@ const Students = () => {
           </thead>
           <tbody>
             {/* <!-- row 1 --> */}
-            {aaa.map((a) => (
-              <StudentRow />
+            {students.map((student) => (
+              <StudentRow key={student.roll} data={student} />
             ))}
           </tbody>
         </table>

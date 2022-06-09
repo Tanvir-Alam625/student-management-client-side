@@ -1,32 +1,30 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const StudentRow = () => {
+const StudentRow = ({ data }) => {
+  const { name, img, home_city, technology, shift, interest } = data;
   return (
     <tr>
       <td>
         <div class="flex items-center space-x-3">
           <div class="avatar">
             <div class="mask mask-squircle w-12 h-12">
-              <img
-                src="/tailwind-css-component-profile-2@56w.png"
-                alt="Avatar Tailwind CSS Component"
-              />
+              <img src={img} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
           <div>
-            <div class="font-bold">Hart Hagerty</div>
-            <div class="text-sm opacity-50">Panchagarh</div>
+            <div class="font-bold">{name}</div>
+            <div class="text-sm opacity-50">{home_city}</div>
           </div>
         </div>
       </td>
       <td>
-        Computer
+        {technology}
         <div className="sm">
-          <span class="badge badge-ghost badge-sm">semester:7th shit:1st</span>
+          <span class="badge badge-ghost badge-sm">Shit:{shift}</span>
         </div>
       </td>
-      <td>Web Development</td>
+      <td>{interest}</td>
       <th>
         <div class="dropdown dropdown-bottom dropdown-end">
           <label tabindex="0" class=" cursor-pointer m-1">
@@ -53,7 +51,7 @@ const StudentRow = () => {
               <Link to="/details">Details</Link>
             </li>
             <li>
-              <a>Delete</a>
+              <button>Delete</button>
             </li>
           </ul>
         </div>
