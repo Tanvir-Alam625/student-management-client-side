@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StudentRow from "./StudentRow";
 
 const Students = () => {
   const aaa = [3, 4, 5, 3, 5, 3, 5];
   const [students, setStudents] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("students.json")
       .then((res) => res.json())
@@ -46,7 +48,13 @@ const Students = () => {
       </div>
       <div className="flex justify-between mt-6  mb-2">
         <button className="btn btn-primary">See All Students</button>
-        <button className="btn btn-primary"> Add New Student</button>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/addStudent")}
+        >
+          {" "}
+          Add New Student
+        </button>
       </div>
       <div class="overflow-x-auto w-full py-12 h-auto">
         <table class="table w-full bg-transparent">

@@ -36,7 +36,7 @@ const Header = () => {
           </ul>
         </div>
         <Link to="/" class="btn btn-ghost normal-case text-primary text-xl">
-          BGPI
+          BPI
         </Link>
       </div>
       <div class="navbar-center hidden lg:flex">

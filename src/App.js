@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import AddStudent from "./components/Students/AddStudent";
 import Details from "./components/Students/Details";
@@ -14,6 +15,7 @@ function App() {
         <Route path="/details" element={<Details />} />
         <Route path="/addStudent" element={<AddStudent />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
