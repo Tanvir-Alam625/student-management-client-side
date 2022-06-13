@@ -45,13 +45,15 @@ const StudentRow = ({ data }) => {
           </label>
           <ul
             tabindex="0"
-            class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+            class="dropdown-content border menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/details">Details</Link>
+              <Link to="/details" className="btn btn-primary mb-4">
+                Update
+              </Link>
             </li>
             <li>
-              <button>Delete</button>
+              <button className="btn btn-error">Delete</button>
             </li>
           </ul>
         </div>

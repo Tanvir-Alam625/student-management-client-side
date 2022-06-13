@@ -35,7 +35,7 @@ const AddStudent = () => {
           <div className="sm-group grid grid-cols-1 lg:grid-cols-2 gap-8 my-4 ">
             <div className="district">
               <label htmlFor="name" className="block text-xl">
-                Technology
+                Select Technology
               </label>
               <select class="select select-primary w-full outline-0 bg-transparent border border-primary ">
                 <option disabled selected>
@@ -49,7 +49,7 @@ const AddStudent = () => {
             </div>
             <div className="shift">
               <label htmlFor="name" className="block text-xl">
-                Shift
+                Select Shift
               </label>
               <select class="select select-primary w-full outline-0 bg-transparent border border-primary ">
                 <option disabled selected>
@@ -62,7 +62,7 @@ const AddStudent = () => {
           <div className="sm-group grid grid-cols-1 lg:grid-cols-2 gap-8 my-4 ">
             <div className="district">
               <label htmlFor="name" className="block text-xl">
-                Interested Technologies(Interning)
+                Select Interested Technologies(Interning)
               </label>
               <select class="select select-primary w-full outline-0 bg-transparent border border-primary ">
                 <option disabled selected>
