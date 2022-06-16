@@ -1,7 +1,7 @@
+import { Result } from "postcss";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import UseStudent from "../hooks/UseStudents";
 import StudentRow from "./StudentRow";
 
 const Students = () => {
@@ -12,13 +12,41 @@ const Students = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const { students, setStudents } = UseStudent();
+  const [students, setStudents] = useState([]);
+  const [spinner, setSpinner] = useState(false);
+  const [showAllStudents, setShowAllStudent] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+  useEffect(() => {
+    setSpinner(true);
+    fetch("http://localhost:5000/students")
+      .then((res) => res.json())
+      .then((data) => {
+        setErrorMessage("");
+        setStudents(data);
+        setSpinner(false);
+      });
+  }, [showAllStudents]);
 
   const onSubmit = (data) => {
+    setSpinner(true);
     const roll = parseInt(data.roll);
     console.log(roll);
-
-    // event.target.reset();
+    fetch(`http://localhost:5000/student/?roll=${roll}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setSpinner(false);
+        if (data._id) {
+          setErrorMessage("");
+          setStudents([data]);
+        } else {
+          setErrorMessage(data.message);
+        }
+      });
+  };
+  const handleShowAllStudents = () => {
+    setShowAllStudent(!showAllStudents);
   };
   return (
     <div className="font-sans max-w-[1100px] mx-auto px-2">
@@ -66,7 +94,9 @@ const Students = () => {
         </div>
       </div>
       <div className="flex justify-between mt-6  mb-2">
-        <button className="btn btn-primary">See All Students</button>
+        <button className="btn btn-primary" onClick={handleShowAllStudents}>
+          See All Students
+        </button>
         <button
           className="btn btn-primary"
           onClick={() => navigate("/addStudent")}
@@ -86,13 +116,29 @@ const Students = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-            {/* <!-- row 1 --> */}
-            {students.map((student) => (
-              <StudentRow key={student.roll} data={student} />
-            ))}
-          </tbody>
+          {!errorMessage && (
+            <tbody>
+              {/* <!-- row 1 --> */}
+
+              {!spinner &&
+                students?.map((student) => (
+                  <StudentRow key={student.roll} data={student} />
+                ))}
+            </tbody>
+          )}
         </table>
+        <div className="min-h-[200px]">
+          {spinner && (
+            <p className="text-xl text-primary text-center  my-4 ">
+              Loading...
+            </p>
+          )}
+          {errorMessage && (
+            <p className="text-xl text-primary text-center  my-4 ">
+              {errorMessage}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
