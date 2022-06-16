@@ -7,14 +7,14 @@ const StudentRow = ({ data }) => {
     <tr>
       <td>
         <div class="flex items-center space-x-3">
-          <div class="avatar">
+          {/* <div class="avatar">
             <div class="mask mask-squircle w-12 h-12">
               <img src={img} alt="Avatar Tailwind CSS Component" />
             </div>
-          </div>
+          </div> */}
           <div>
             <div class="font-bold">{name}</div>
-            <div class="text-sm opacity-50">{home_city}</div>
+            <div class="text-sm opacity-50">City: {home_city}</div>
           </div>
         </div>
       </td>
@@ -27,7 +27,7 @@ const StudentRow = ({ data }) => {
       <td>{interest}</td>
       <th>
         <div class="dropdown dropdown-bottom dropdown-end">
-          <label tabindex="0" class=" cursor-pointer m-1">
+          <label tabIndex="0" class=" cursor-pointer m-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -44,7 +44,7 @@ const StudentRow = ({ data }) => {
             </svg>
           </label>
           <ul
-            tabindex="0"
+            tabIndex="0"
             class="dropdown-content border menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>

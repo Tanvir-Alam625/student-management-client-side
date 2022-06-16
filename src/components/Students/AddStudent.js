@@ -38,13 +38,11 @@ const AddStudent = () => {
                 Select Technology
               </label>
               <select class="select select-primary w-full outline-0 bg-transparent border border-primary ">
-                <option disabled selected>
-                  Computer
-                </option>
-                <option>Civil</option>
+                <option selected>Computer</option>
+                {/* <option>Civil</option>
                 <option>Electronics</option>
                 <option>Refrigeration</option>
-                <option>Environmental </option>
+                <option>Environmental </option> */}
               </select>
             </div>
             <div className="shift">
@@ -52,9 +50,7 @@ const AddStudent = () => {
                 Select Shift
               </label>
               <select class="select select-primary w-full outline-0 bg-transparent border border-primary ">
-                <option disabled selected>
-                  1st
-                </option>
+                <option selected>1st</option>
                 <option>2nd</option>
               </select>
             </div>
@@ -75,7 +71,7 @@ const AddStudent = () => {
                 <option>Machine Learning</option>
               </select>
             </div>
-            <div className="shift">
+            {/* <div className="shift">
               <label htmlFor="name" className="block text-xl">
                 Upload Your Professional Photo
               </label>
@@ -84,7 +80,7 @@ const AddStudent = () => {
                 name="image"
                 className="input pt-[6px] input-bordered input-primary  w-full bg-transparent"
               />
-            </div>
+            </div> */}
           </div>
           <div className="grid grid-cols-1">
             <div className="bio">

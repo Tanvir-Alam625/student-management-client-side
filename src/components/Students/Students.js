@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import UseStudent from "../hooks/UseStudents";
 import StudentRow from "./StudentRow";
 
 const Students = () => {
-  const aaa = [3, 4, 5, 3, 5, 3, 5];
-  const [students, setStudents] = useState([]);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
-  useEffect(() => {
-    fetch("students.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setStudents(data);
-      });
-  }, []);
+  const { students, setStudents } = UseStudent();
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    console.log(event.target.roll.value);
-    event.target.reset();
+  const onSubmit = (data) => {
+    const roll = parseInt(data.roll);
+    console.log(roll);
+
+    // event.target.reset();
   };
   return (
     <div className="font-sans max-w-[1100px] mx-auto px-2">
@@ -33,18 +34,36 @@ const Students = () => {
         <h2 className="text-xl my-3 text-primary  font-semibold text-center">
           Search Student
         </h2>
-        <form onSubmit={handleSearch} className="flex justify-center">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center">
           <input
             type="number"
-            required
-            name="roll"
-            className=" border-2 border-primary px-4 py-2 rounded-l-md  shadow-md w-full max-w-xs bg-transparent outline-0"
+            {...register("roll", {
+              required: true,
+              maxLength: 7,
+              minLength: 5,
+            })}
+            className={` border-2 border-primary text-primary px-4 py-2 rounded-l-md  shadow-md w-full max-w-xs bg-transparent outline-0  ${
+              errors.roll ? "border-red-500" : "border-primary"
+            }`}
             placeholder="Type Student Roll"
           />
           <button className="py-2 px-4 bg-primary text-white rounded-r-md font-semibold ">
             Search
           </button>
         </form>
+        <div className="error-message my-4">
+          <p className="text-center">
+            {errors.roll?.type === "required" && (
+              <span className="text-red-500">Search field is required</span>
+            )}
+            {errors.roll?.type === "maxLength" && (
+              <span className="text-red-500">Roll must be 6 character </span>
+            )}
+            {errors.roll?.type === "minLength" && (
+              <span className="text-red-500">Roll must be 6 character </span>
+            )}
+          </p>
+        </div>
       </div>
       <div className="flex justify-between mt-6  mb-2">
         <button className="btn btn-primary">See All Students</button>
