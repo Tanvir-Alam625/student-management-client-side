@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const StudentRow = ({ data }) => {
-  const { name, img, home_city, technology, shift, interest } = data;
+  const { name, img, home_city, technology, shift, interest, roll } = data;
   return (
     <tr>
       <td>
@@ -15,6 +15,7 @@ const StudentRow = ({ data }) => {
           <div>
             <div class="font-bold">{name}</div>
             <div class="text-sm opacity-50">City: {home_city}</div>
+            <div class="text-sm opacity-50">Roll: {roll}</div>
           </div>
         </div>
       </td>

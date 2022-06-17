@@ -22,7 +22,7 @@ const Students = () => {
       .then((res) => res.json())
       .then((data) => {
         setErrorMessage("");
-        setStudents(data);
+        setStudents(data.reverse());
         setSpinner(false);
       });
   }, [showAllStudents]);
