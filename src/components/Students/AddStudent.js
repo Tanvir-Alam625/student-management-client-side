@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import "./Spinner.css";
 
 const AddStudent = () => {
   const {
@@ -10,19 +12,38 @@ const AddStudent = () => {
   } = useForm();
   const [spinner, setSpinner] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
   const onSubmit = (data) => {
+    const roll = parseInt(data.roll);
+    data.roll = roll;
+    setSpinner(true);
     fetch(`http://localhost:5000/student/?roll=${data.roll}`)
       .then((res) => {
         return res.json();
       })
-      .then((data) => {
-        setSpinner(false);
-        if (data._id) {
+      .then((dataRoll) => {
+        if (dataRoll._id) {
+          setSpinner(false);
           setErrorMessage(
             "This Student Already Exist! Please Enter The valid Information"
           );
         } else {
           setErrorMessage("");
+
+          fetch("http://localhost:5000/student", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              if (result.insertedId) {
+                setSpinner(false);
+                navigate("/");
+              }
+            });
         }
       });
     console.log(data);
@@ -173,9 +194,18 @@ const AddStudent = () => {
           <div className="add-btn my-6">
             <button
               type="submit"
-              className="text-xl btn px-4 py-2 btn-primary  shadow-md text-white"
+              disabled={spinner && true}
+              className="text-xl flex items-center  btn px-4 py-2 btn-primary  shadow-md text-white"
             >
               Add Now{" "}
+              {spinner && (
+                <div class="lds-ring">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              )}
             </button>
           </div>
         </form>

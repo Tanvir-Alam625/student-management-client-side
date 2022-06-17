@@ -14,7 +14,7 @@ const StudentRow = ({ data }) => {
           </div> */}
           <div>
             <div class="font-bold">{name}</div>
-            <div class="text-sm opacity-50">City: {home_city}</div>
+            <div class="text-sm opacity-50 capitalize">City: {home_city}</div>
             <div class="text-sm opacity-50">Roll: {roll}</div>
           </div>
         </div>

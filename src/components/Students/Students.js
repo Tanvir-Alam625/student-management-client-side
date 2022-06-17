@@ -75,7 +75,10 @@ const Students = () => {
             }`}
             placeholder="Type Student Roll"
           />
-          <button className="py-2 px-4 bg-primary text-white rounded-r-md font-semibold ">
+          <button
+            disabled={spinner ? true : false}
+            className="py-2 px-4 bg-primary text-white rounded-r-md font-semibold "
+          >
             Search
           </button>
         </form>
@@ -85,10 +88,12 @@ const Students = () => {
               <span className="text-red-500">Search field is required</span>
             )}
             {errors.roll?.type === "maxLength" && (
-              <span className="text-red-500">Roll must be 6 character </span>
+              <span className="text-red-500">
+                Roll maximum seven character{" "}
+              </span>
             )}
             {errors.roll?.type === "minLength" && (
-              <span className="text-red-500">Roll must be 6 character </span>
+              <span className="text-red-500">Roll minimum five character</span>
             )}
           </p>
         </div>
