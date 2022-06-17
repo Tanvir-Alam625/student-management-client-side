@@ -18,7 +18,7 @@ const Students = () => {
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     setSpinner(true);
-    fetch("http://localhost:5000/students")
+    fetch("https://limitless-sands-95141.herokuapp.com/students")
       .then((res) => res.json())
       .then((data) => {
         setErrorMessage("");
@@ -30,8 +30,7 @@ const Students = () => {
   const onSubmit = (data) => {
     setSpinner(true);
     const roll = parseInt(data.roll);
-    console.log(roll);
-    fetch(`http://localhost:5000/student/?roll=${roll}`)
+    fetch(`https://limitless-sands-95141.herokuapp.com/student/?roll=${roll}`)
       .then((res) => {
         return res.json();
       })

@@ -17,7 +17,9 @@ const AddStudent = () => {
     const roll = parseInt(data.roll);
     data.roll = roll;
     setSpinner(true);
-    fetch(`http://localhost:5000/student/?roll=${data.roll}`)
+    fetch(
+      `https://limitless-sands-95141.herokuapp.com/student/?roll=${data.roll}`
+    )
       .then((res) => {
         return res.json();
       })
@@ -30,7 +32,7 @@ const AddStudent = () => {
         } else {
           setErrorMessage("");
 
-          fetch("http://localhost:5000/student", {
+          fetch("https://limitless-sands-95141.herokuapp.com/student", {
             method: "POST",
             headers: {
               "content-type": "application/json",
