@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const someCommmonStyle = {
+  border : "2px solid #a991f7",
+  color: "#000"
+}
 const StudentRow = ({ data }) => {
   const { name, img, home_city, technology, shift, interest, roll } = data;
   return (
-    <tr>
-      <td>
+    <tr style={someCommmonStyle}>
+      <td style={someCommmonStyle}>
         <div class="flex items-center space-x-3">
           {/* <div class="avatar">
             <div class="mask mask-squircle w-12 h-12">
@@ -13,20 +17,20 @@ const StudentRow = ({ data }) => {
             </div>
           </div> */}
           <div>
-            <div class="font-bold">{name}</div>
+            <div class="font-bold capitalize">{name}</div>
             <div class="text-sm opacity-50 capitalize">City: {home_city}</div>
             <div class="text-sm opacity-50">Roll: {roll}</div>
           </div>
         </div>
       </td>
-      <td>
+      <td style={someCommmonStyle}>
         {technology}
         <div className="sm">
           <span class="badge badge-ghost badge-sm">Shit:{shift}</span>
         </div>
       </td>
-      <td>{interest}</td>
-      <th>
+      <td style={someCommmonStyle}>{interest}</td>
+      <th style={someCommmonStyle}>
         <div class="dropdown dropdown-bottom dropdown-end">
           <label tabIndex="0" class=" cursor-pointer m-1">
             <svg

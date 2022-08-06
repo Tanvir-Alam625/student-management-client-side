@@ -47,6 +47,11 @@ const Students = () => {
   const handleShowAllStudents = () => {
     setShowAllStudent(!showAllStudents);
   };
+
+  const someCommmonStyle = {
+    border : "2px solid #a991f7",
+    color: "#000"
+  }
   return (
     <div className="font-sans max-w-[1100px] mx-auto px-2">
       <div className="stu-header py-4">
@@ -61,6 +66,7 @@ const Students = () => {
         <h2 className="text-xl my-3 text-primary  font-semibold text-center">
           Search Student
         </h2>
+        {/* search form start  */}
         <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center">
           <input
             type="number"
@@ -97,6 +103,7 @@ const Students = () => {
           </p>
         </div>
       </div>
+      {/* end search field  */}
       <div className="flex justify-between mt-6  mb-2">
         <button className="btn btn-primary" onClick={handleShowAllStudents}>
           See All Students
@@ -109,19 +116,21 @@ const Students = () => {
           Add New Student
         </button>
       </div>
+
+      {/* Student table information  */}
       <div class="overflow-x-auto w-full py-12 h-auto">
-        <table class="table w-full bg-transparent">
+        <table class="w-full  table-normal">
           {/* <!-- head --> */}
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Technology</th>
-              <th>Interest</th>
-              <th>Action</th>
+          <thead style={someCommmonStyle}>
+            <tr style={someCommmonStyle}>
+              <th style={someCommmonStyle}>Name</th>
+              <th style={someCommmonStyle}>Technology</th>
+              <th style={someCommmonStyle}>Interest</th>
+              <th style={someCommmonStyle}>Action</th>
             </tr>
           </thead>
           {!errorMessage && (
-            <tbody>
+            <tbody style={someCommmonStyle}>
               {/* <!-- row 1 --> */}
 
               {!spinner &&
