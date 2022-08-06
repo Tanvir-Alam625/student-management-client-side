@@ -48,6 +48,17 @@ const Students = () => {
     setShowAllStudent(!showAllStudents);
   };
 
+  //handle delete studnet function 
+  const hanldeDeleteStudent=(id)=>{
+    const url = `http://localhost:5000/student/${id}`
+    fetch(url,{
+      method:"DELETE",
+    }).then(res=>res.json())
+    .then(result =>{
+      console.log(result);
+    })
+
+  }
   const someCommmonStyle = {
     border : "2px solid #a991f7",
     color: "#000"
@@ -135,7 +146,7 @@ const Students = () => {
 
               {!spinner &&
                 students?.map((student) => (
-                  <StudentRow key={student.roll} data={student} />
+                  <StudentRow key={student.roll} data={student} hanldeDeleteStudent={hanldeDeleteStudent}  />
                 ))}
             </tbody>
           )}

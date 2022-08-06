@@ -5,17 +5,12 @@ const someCommmonStyle = {
   border : "2px solid #a991f7",
   color: "#000"
 }
-const StudentRow = ({ data }) => {
-  const { name, img, home_city, technology, shift, interest, roll } = data;
+const StudentRow = ({ data, hanldeDeleteStudent, setDeleteSpinnerBtn }) => {
+  const { name, img, home_city, technology, shift, interest, roll, _id } = data;
   return (
     <tr style={someCommmonStyle}>
       <td style={someCommmonStyle}>
         <div class="flex items-center space-x-3">
-          {/* <div class="avatar">
-            <div class="mask mask-squircle w-12 h-12">
-              <img src={img} alt="Avatar Tailwind CSS Component" />
-            </div>
-          </div> */}
           <div>
             <div class="font-bold capitalize">{name}</div>
             <div class="text-sm opacity-50 capitalize">City: {home_city}</div>
@@ -58,7 +53,9 @@ const StudentRow = ({ data }) => {
               </Link>
             </li>
             <li>
-              <button className="btn btn-error">Delete</button>
+              <button className="btn btn-error"
+              onClick={()=>hanldeDeleteStudent(_id)}
+              >Delete</button>
             </li>
           </ul>
         </div>
